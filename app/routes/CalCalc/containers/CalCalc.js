@@ -20,7 +20,7 @@ const CalCalc = React.createClass({
   },
 
   render: function() {
-    return(
+    return (
       <View>
         <Text>Please select your gender:</Text>
         <PickerIOS
@@ -32,6 +32,19 @@ const CalCalc = React.createClass({
                 key={sex}
                 value={sex}
                 label={sex}
+              />
+            ))}
+        </PickerIOS>
+        <Text>Please select your level of activity:</Text>
+        <PickerIOS
+          style={styles.picker}
+          onValueChange={(activity) => this.setState({activity})}
+          selectedValue={this.state.activity}>
+            {USER_ACTIVITY.map(activity => (
+              <PickerItemIOS
+                key={activity}
+                value={activity}
+                label={activity}
               />
             ))}
         </PickerIOS>
