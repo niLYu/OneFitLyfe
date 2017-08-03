@@ -5,7 +5,7 @@ import NavBar, { NavButton, NavButtonText, NavTitle } from 'react-native-nav'
 export default class NavBarIOSColored extends React.Component {
   render() {
     return (
-      <NavBar style={styles}>
+      <NavBar style={styles} statusBar={StatusBarConfig}>
         <NavButton onPress={() => alert('hi')}>
           <NavButtonText style={styles.buttonText}>
             {"Home"}
@@ -40,14 +40,9 @@ const styles = StyleSheet.create({
 })
 
 StatusBarConfig = {
-  // put any configuration for the StatusBar here
-
-  // default iOS configuration:
   animated: true,
   hidden: false,
   barStyle: 'default',
   networkActivityIndicatorVisible: false,
   showHideTransition: 'fade',
-
-  // default Android configuration:
 }
