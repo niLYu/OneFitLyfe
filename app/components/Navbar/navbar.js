@@ -1,9 +1,11 @@
 import React from 'react';
 import { StyleSheet } from 'react-native'
 import NavBar, { NavButton, NavButtonText, NavTitle } from 'react-native-nav'
+import Home from '../../routes/Home/containers/Home.js'
 
 export default class NavBarIOSColored extends React.Component {
   render() {
+    console.log(this.props)
     return (
       <NavBar style={styles} statusBar={StatusBarConfig}>
         <NavButton onPress={() => alert('hi')}>
@@ -29,7 +31,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#68efad',
   },
   navBar: {
-    backgroundColor:  '#68efad',
+    backgroundColor: '#68efad',
   },
   title: {
     color: '#rgba(0, 0, 0, 0.65)',
