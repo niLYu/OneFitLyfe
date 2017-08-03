@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {
   StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View, PickerIOS,
 } from 'react-native';
@@ -12,18 +12,19 @@ const USER_ACTIVITY = [
     'sedentary', 'light activity', 'active', 'very active'
 ]
 
-const CalCalc = React.createClass({
-  getInitialState: function() {
-    return {
+class CalCalc extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       sex: 'male',
       activity: 'sedentary'
-    };
-  },
+    }
+  }
 
-  render: function() {
+  render () {
     return (
       <View>
-        <Navbar />
+        <Navbar/>
         <Text>Please select your gender:</Text>
         <PickerIOS
           style={styles.picker}
@@ -53,7 +54,7 @@ const CalCalc = React.createClass({
       </View>
     )
   }
-})
+}
 
 var styles = StyleSheet.create({
   picker: {

@@ -6,6 +6,7 @@ import Home from '../../routes/Home/containers/Home.js'
 export default class NavBarIOSColored extends React.Component {
   render() {
     console.log(this.props)
+    // const { navigate } = this.props.props.navigation;
     return (
       <NavBar style={styles} statusBar={StatusBarConfig}>
         <NavButton onPress={() => alert('hi')}>
