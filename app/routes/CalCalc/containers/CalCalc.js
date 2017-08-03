@@ -2,6 +2,7 @@ import React from 'react';
 import {
   StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View, PickerIOS,
 } from 'react-native';
+import Navbar from '../../../components/Navbar/Navbar.js';
 
 const PickerItemIOS = PickerIOS.Item;
 
@@ -22,6 +23,7 @@ const CalCalc = React.createClass({
   render: function() {
     return (
       <View>
+        <Navbar />
         <Text>Please select your gender:</Text>
         <PickerIOS
           style={styles.picker}

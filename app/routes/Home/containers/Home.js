@@ -10,6 +10,7 @@ class Home extends Component {
     const { navigate } = this.props.navigation;
     return (
       <View>
+        <Navbar />
         <Text>Home</Text>
         <Button
           onPress={() => navigate('Calculator', { CalCalc })}
