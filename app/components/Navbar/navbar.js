@@ -25,6 +25,9 @@ export default class NavBarIOSColored extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  statusBar: {
+    backgroundColor: '#68efad',
+  },
   navBar: {
     backgroundColor:  '#68efad',
   },
@@ -35,3 +38,16 @@ const styles = StyleSheet.create({
     color: '#rgba(0, 0, 0, 0.45)',
   },
 })
+
+StatusBarConfig = {
+  // put any configuration for the StatusBar here
+
+  // default iOS configuration:
+  animated: true,
+  hidden: false,
+  barStyle: 'default',
+  networkActivityIndicatorVisible: false,
+  showHideTransition: 'fade',
+
+  // default Android configuration:
+}
