@@ -5,7 +5,6 @@ import Home from '../../routes/Home/containers/Home.js'
 
 export default class NavBarIOSColored extends Component {
   render() {
-    console.log('I want props', this.props)
     const { navigate } = this.props.prop.navigation;
     return (
       <NavBar style={styles} statusBar={StatusBarConfig}>
@@ -23,7 +22,6 @@ export default class NavBarIOSColored extends Component {
           </NavButtonText>
         </NavButton>
       </NavBar>
-
     )
   }
 }
@@ -34,6 +32,7 @@ const styles = StyleSheet.create({
   },
   navBar: {
     backgroundColor: '#68efad',
+    marginBottom: 20,
   },
   title: {
     color: '#rgba(0, 0, 0, 0.65)',
