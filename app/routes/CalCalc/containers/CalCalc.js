@@ -24,7 +24,7 @@ class CalCalc extends Component {
   render () {
     return (
       <View>
-        <Navbar/>
+      <Navbar prop={this.props}></Navbar>
         <Text>Please select your gender:</Text>
         <PickerIOS
           style={styles.picker}

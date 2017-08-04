@@ -1,15 +1,15 @@
-import React from 'react';
-import { StyleSheet } from 'react-native'
+import React, {Component} from 'react';
+import { StyleSheet, View, Text } from 'react-native'
 import NavBar, { NavButton, NavButtonText, NavTitle } from 'react-native-nav'
 import Home from '../../routes/Home/containers/Home.js'
 
-export default class NavBarIOSColored extends React.Component {
+export default class NavBarIOSColored extends Component {
   render() {
-    console.log(this.props)
-    // const { navigate } = this.props.props.navigation;
+    console.log('I want props', this.props)
+    const { navigate } = this.props.prop.navigation;
     return (
       <NavBar style={styles} statusBar={StatusBarConfig}>
-        <NavButton onPress={() => alert('hi')}>
+        <NavButton onPress={() => navigate('Home', { Home })}>
           <NavButtonText style={styles.buttonText}>
             {"Home"}
           </NavButtonText>
@@ -23,6 +23,7 @@ export default class NavBarIOSColored extends React.Component {
           </NavButtonText>
         </NavButton>
       </NavBar>
+
     )
   }
 }

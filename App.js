@@ -7,8 +7,10 @@ import CalCalcScreen from './app/routes/CalCalc/containers/CalCalc.js';
 
 
 const App = StackNavigator({
+  // Navbar: {screen: NavbarScreen},
   Home: { screen: HomeScreen },
   Calculator: { screen: CalCalcScreen},
+
 }, {headerMode: 'none'})
 
 export default App;
