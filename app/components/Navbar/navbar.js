@@ -1,12 +1,15 @@
-import React from 'react';
-import { StyleSheet } from 'react-native'
+import React, {Component} from 'react';
+import { StyleSheet, View, Text } from 'react-native'
 import NavBar, { NavButton, NavButtonText, NavTitle } from 'react-native-nav'
+import Home from '../../routes/Home/containers/Home.js'
 
-export default class NavBarIOSColored extends React.Component {
+export default class NavBarIOSColored extends Component {
   render() {
+    console.log('I want props', this.props)
+    const { navigate } = this.props.prop.navigation;
     return (
-      <NavBar style={styles}>
-        <NavButton onPress={() => alert('hi')}>
+      <NavBar style={styles} statusBar={StatusBarConfig}>
+        <NavButton onPress={() => navigate('Home', { Home })}>
           <NavButtonText style={styles.buttonText}>
             {"Home"}
           </NavButtonText>
@@ -20,13 +23,17 @@ export default class NavBarIOSColored extends React.Component {
           </NavButtonText>
         </NavButton>
       </NavBar>
+
     )
   }
 }
 
 const styles = StyleSheet.create({
+  statusBar: {
+    backgroundColor: '#68efad',
+  },
   navBar: {
-    backgroundColor:  '#68efad',
+    backgroundColor: '#68efad',
   },
   title: {
     color: '#rgba(0, 0, 0, 0.65)',
@@ -35,3 +42,11 @@ const styles = StyleSheet.create({
     color: '#rgba(0, 0, 0, 0.45)',
   },
 })
+
+StatusBarConfig = {
+  animated: true,
+  hidden: false,
+  barStyle: 'default',
+  networkActivityIndicatorVisible: false,
+  showHideTransition: 'fade',
+}

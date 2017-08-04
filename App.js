@@ -1,16 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Navbar from './app/components/Navbar/navbar.js'
+import { Text, View } from 'react-native';
+import { StackNavigator } from 'react-navigation';
+import NavbarScreen from './app/components/Navbar/Navbar.js';
+import HomeScreen from './app/routes/Home/containers/Home.js';
+import CalCalcScreen from './app/routes/CalCalc/containers/CalCalc.js';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View>
-        <Navbar></Navbar>
-        <Text>Changesss you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
-    );
-  }
-}
+
+const App = StackNavigator({
+  // Navbar: {screen: NavbarScreen},
+  Home: { screen: HomeScreen },
+  Calculator: { screen: CalCalcScreen},
+
+}, {headerMode: 'none'})
+
+export default App;
 
