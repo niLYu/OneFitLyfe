@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
-  StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View, PickerIOS,
+  StyleSheet, Text, TextInput, View, PickerIOS, Button
 } from 'react-native';
 import Navbar from '../../../components/Navbar/Navbar.js';
+import {assignUserInfo} from '../modules/calcalcReducer';
 
 const PickerItemIOS = PickerIOS.Item;
 
@@ -22,9 +24,16 @@ class CalCalc extends Component {
       height: null,
       weight: null,
     }
+  this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onSubmit (event) {
+    this.props.assignUserInfo(this.state)
+    console.log(this.state)
   }
 
   render() {
+    console.log(this.props)
     return (
       <View style={styles.mainContainer}>
         <Navbar prop={this.props}></Navbar>
@@ -66,6 +75,12 @@ class CalCalc extends Component {
           <TextInput
             style={styles.textInput}
             placeholder='Enter your current weight' />
+          <Button
+            onPress={() => this.onSubmit()}
+            title="Submit"
+            color="#841584"
+            accessibilityLabel="Submit"
+          />
         </View>
       </View>
     )
@@ -90,5 +105,7 @@ var styles = StyleSheet.create({
   }
 });
 
-export default CalCalc;
+const mapDispatch = {assignUserInfo}
+
+export default connect(null, mapDispatch)(CalCalc);
 

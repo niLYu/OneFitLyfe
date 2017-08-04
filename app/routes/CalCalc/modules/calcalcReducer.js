@@ -3,6 +3,7 @@ const GET_ACTIVITY = 'ACTIVITY';
 const GET_AGE = 'AGE';
 const GET_HEIGHT = 'HEIGHT';
 const GET_WEIGHT = 'WEIGHT';
+const GET_USER = 'GET_USER';
 
 export const getSex = sex => ({
   type: GET_SEX, sex
@@ -24,6 +25,10 @@ export const getWeight = weight => ({
   type: GET_WEIGHT, weight
 })
 
+export const getUserInfo = userInfo => ({
+  type: GET_USER, userInfo
+})
+
 export const assignSex = sex => dispatch => {
   dispatch(getSex(sex))
 }
@@ -42,6 +47,10 @@ export const assignHeight = height => dispatch => {
 
 export const assignWeight = weight => dispatch => {
   dispatch(getWeight(weight))
+}
+
+export const assignUserInfo = user => dispatch => {
+  dispatch(getUserInfo(user))
 }
 
 const initialState = {
@@ -69,6 +78,9 @@ export default function (state = initialState, action) {
       break;
     case GET_WEIGHT:
       newState.weight = action.weight
+      break;
+    case GET_USER:
+      newState.user = action.user
       break;
     default:
       return state;
