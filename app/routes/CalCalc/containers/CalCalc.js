@@ -29,11 +29,9 @@ class CalCalc extends Component {
 
   onSubmit (event) {
     this.props.assignUserInfo(this.state)
-    console.log(this.state)
   }
 
   render() {
-    console.log(this.props)
     return (
       <View style={styles.mainContainer}>
         <Navbar prop={this.props}></Navbar>
@@ -78,7 +76,7 @@ class CalCalc extends Component {
           <Button
             onPress={() => this.onSubmit()}
             title="Submit"
-            color="#841584"
+            color="#008000"
             accessibilityLabel="Submit"
           />
         </View>
