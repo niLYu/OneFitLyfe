@@ -8,16 +8,19 @@ const PickerItemIOS = PickerIOS.Item;
 
 const USER_SEX = ['male', 'female']
 
-const USER_ACTIVITY = [
-  'sedentary', 'light activity', 'active', 'very active'
-]
+const USER_ACTIVITY = {
+  'sedentary': 1.2, 'light activity': 1.375, 'active': 1.55, 'very active': 1.725
+}
 
 class CalCalc extends Component {
   constructor(props) {
     super(props);
     this.state = {
       sex: 'male',
-      activity: 'sedentary'
+      activity: 'sedentary',
+      age: null,
+      height: null,
+      weight: null,
     }
   }
 
@@ -46,7 +49,7 @@ class CalCalc extends Component {
             itemStyle={{ height: 50 }}
             onValueChange={(activity) => this.setState({ activity })}
             selectedValue={this.state.activity}>
-            {USER_ACTIVITY.map(activity => (
+            {Object.keys(USER_ACTIVITY).map(activity => (
               <PickerItemIOS
                 key={activity}
                 value={activity}
@@ -54,6 +57,15 @@ class CalCalc extends Component {
               />
             ))}
           </PickerIOS>
+          <TextInput
+            style={styles.textInput}
+            placeholder='Enter your age' />
+          <TextInput
+            style={styles.textInput}
+            placeholder='Enter your height' />
+          <TextInput
+            style={styles.textInput}
+            placeholder='Enter your current weight' />
         </View>
       </View>
     )
@@ -72,8 +84,10 @@ var styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center'
   },
+  textInput: {
+    padding: 10
+  }
 });
 
 export default CalCalc;
