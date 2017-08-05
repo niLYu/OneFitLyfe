@@ -1,7 +1,7 @@
-import HomeContainer from './containers/Home';
+// import HomeContainer from './containers/Home';
 
-export default {
-  path: 'home',
-  title: 'Home',
-  component: HomeContainer
-}
+// export default {
+//   path: 'home',
+//   title: 'Home',
+//   component: HomeContainer
+// }

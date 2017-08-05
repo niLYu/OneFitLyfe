@@ -43,9 +43,9 @@ const styles = StyleSheet.create({
 })
 
 StatusBarConfig = {
-  animated: true,
-  hidden: false,
-  barStyle: 'default',
-  networkActivityIndicatorVisible: false,
-  showHideTransition: 'fade',
+  // animated: true,
+  // hidden: false,
+  // barStyle: 'default',
+  // networkActivityIndicatorVisible: false,
+  // showHideTransition: 'fade',
 }

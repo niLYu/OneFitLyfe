@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  StyleSheet, Text, TextInput, View, PickerIOS, Button
+  StyleSheet, Text, TextInput, View, PickerIOS, Button,
+  KeyboardAvoidingView
 } from 'react-native';
+import Data from '../../Data/containers/Data';
 import Navbar from '../../../components/Navbar/Navbar.js';
 import {assignUserInfo} from '../modules/calcalcReducer';
 
@@ -29,6 +31,7 @@ class CalCalc extends Component {
 
   onSubmit (event) {
     this.props.assignUserInfo(this.state)
+    this.props.navigation.navigate('Data', { Data })
   }
 
   render() {
@@ -95,15 +98,28 @@ var styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    flexDirection: 'column',
     alignItems: 'center',
   },
   textInput: {
-    padding: 10
+    height: 40,
+    borderColor: 'gray',
+    // borderRadius: 2,
+    // backgroundColor: '#fff',
+    // marginHorizontal: 10,
+    // marginVertical: 5,
+    // paddingVertical: 5,
+    // paddingHorizontal: 15,
+    // width: window.width - 30,
   }
 });
 
+const mapState = function (state) {
+  return {
+    user: state
+  };
+};
+
 const mapDispatch = {assignUserInfo}
 
-export default connect(null, mapDispatch)(CalCalc);
+export default connect(mapState, mapDispatch)(CalCalc);
 
