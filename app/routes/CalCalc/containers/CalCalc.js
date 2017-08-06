@@ -29,7 +29,7 @@ class CalCalc extends Component {
   this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onSubmit (event) {
+  onSubmit () {
     this.props.assignUserInfo(this.state)
     this.props.navigation.navigate('Data')
   }
@@ -62,7 +62,7 @@ class CalCalc extends Component {
             {Object.keys(USER_ACTIVITY).map(activity => (
               <PickerItemIOS
                 key={activity}
-                value={activity}
+                value={USER_ACTIVITY[activity]}
                 label={activity}
               />
             ))}
