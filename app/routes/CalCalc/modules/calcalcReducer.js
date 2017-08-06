@@ -20,7 +20,7 @@ export default function (state = initialState, action) {
   const newState = Object.assign({}, state)
   switch (action.type) {
     case GET_USER:
-      newState.user = action.user
+      newState.user = action.userInfo
       break;
     default:
       return state;

@@ -69,12 +69,15 @@ class CalCalc extends Component {
           </PickerIOS>
           <TextInput
             style={styles.textInput}
+            onChangeText={age => this.setState({age})}
             placeholder='Enter your age' />
           <TextInput
             style={styles.textInput}
+            onChangeText={height => this.setState({height})}
             placeholder='Enter your height' />
           <TextInput
             style={styles.textInput}
+            onChangeText={weight => this.setState({weight})}
             placeholder='Enter your current weight' />
           <Button
             onPress={() => this.onSubmit()}
@@ -113,13 +116,7 @@ var styles = StyleSheet.create({
   }
 });
 
-const mapState = function (state) {
-  return {
-    user: state
-  };
-};
-
 const mapDispatch = {assignUserInfo}
 
-export default connect(mapState, mapDispatch)(CalCalc);
+export default connect(null, mapDispatch)(CalCalc);
 

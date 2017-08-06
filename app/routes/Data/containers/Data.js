@@ -8,7 +8,6 @@ class Data extends Component {
     super(props);
   }
   render() {
-    console.log('data', this.props)
     return (
       <View>
         <Navbar prop={this.props}/>
@@ -20,7 +19,7 @@ class Data extends Component {
 
 const mapState = function (state) {
   return {
-    user: state
+    user: state.calCalc.user
   }
 }
 
