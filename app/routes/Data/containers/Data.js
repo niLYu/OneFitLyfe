@@ -6,15 +6,16 @@ import Navbar from '../../../components/Navbar/Navbar.js';
 class Data extends Component {
   constructor(props) {
     super(props);
-    this.getBMR = this.getBMR.bind(this)
+    this.getTDEE = this.getTDEE.bind(this)
   }
 
-  getBMR() {
+  getTDEE() {
     const user = this.props.user
+    console.log(this.props.user)
     if (user.sex === 'male') {
-      return 10 * user.weight / 2.2046226218 + 6.25 * user.height * 2.54 - 5 * user.age + 5
+      return Math.round((10 * user.weight / 2.2046226218 + 6.25 * user.height * 2.54 - 5 * user.age + 5) * user.activity)
     } else {
-      return 10 * user.weight / 2.2046226218 + 6.25 * user.height * 2.54 - 5 * user.age - 161
+      return Math.round((10 * user.weight / 2.2046226218 + 6.25 * user.height * 2.54 - 5 * user.age - 161) * user.activity)
     }
   }
 
@@ -22,8 +23,9 @@ class Data extends Component {
     return (
       <View>
         <Navbar prop={this.props} />
-        <Text>Data component</Text>
-        <Text>{this.getBMR()}</Text>
+        <Text>{this.getTDEE() + 500} calories</Text>
+        <Text>{this.getTDEE()} calories</Text>
+        <Text>{this.getTDEE() - 500} calories</Text>
       </View>
     )
   }

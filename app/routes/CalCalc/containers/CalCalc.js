@@ -21,7 +21,7 @@ class CalCalc extends Component {
     super(props);
     this.state = {
       sex: 'male',
-      activity: 'sedentary',
+      activity: 1.2,
       age: null,
       height: null,
       weight: null,
