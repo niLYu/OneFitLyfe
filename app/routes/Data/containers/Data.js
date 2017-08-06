@@ -18,6 +18,10 @@ class Data extends Component {
     }
   }
 
+   onSubmit () {
+    this.props.navigation.navigate('Daily')
+  }
+
   render() {
     return (
       <View>
@@ -25,6 +29,12 @@ class Data extends Component {
         <Text>To gain 1lb per week, consume {this.getTDEE() + 500} calories daily</Text>
         <Text>To maintain, consume {this.getTDEE()} calories daily</Text>
         <Text>To lose 1lb per week, consume {this.getTDEE() - 500} calories daily</Text>
+        <Button
+            onPress={() => this.onSubmit()}
+            title="Enter target weight"
+            color="#008000"
+            accessibilityLabel="Enter target weight"
+          />
       </View>
     )
   }
