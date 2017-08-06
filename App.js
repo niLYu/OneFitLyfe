@@ -41,9 +41,4 @@ export default function NCAP() {
   )
 };
 
-// const App = StackNavigator({
-//   Home: { screen: HomeScreen },
-//   Calculator: { screen: CalCalcScreen},
-
-// }, {headerMode: 'none'})
 

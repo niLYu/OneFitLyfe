@@ -25,3 +25,11 @@ const mapState = function (state) {
 }
 
 export default connect(mapState, null)(Data);
+
+// BMR = 88.362 + (13.397 x weight in kg) +
+// (4.799 x height in cm) – (5.677 x age in years)
+
+// BMR = 447.593 + (9.247 x weight in kg) +
+// (3.098 x height in cm) – (4.330 x age in years)
+
+// https://www.nutritionix.com/business/api

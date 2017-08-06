@@ -31,7 +31,7 @@ class CalCalc extends Component {
 
   onSubmit (event) {
     this.props.assignUserInfo(this.state)
-    this.props.navigation.navigate('Data', { Data })
+    this.props.navigation.navigate('Data')
   }
 
   render() {

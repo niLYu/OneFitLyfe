@@ -13,7 +13,7 @@ class Home extends Component {
         <Navbar prop={this.props}/>
         <Text>Home</Text>
         <Button
-          onPress={() => navigate('Calculator', { CalCalc })}
+          onPress={() => navigate('Calculator')}
           title="Start now"
         />
       </View>
