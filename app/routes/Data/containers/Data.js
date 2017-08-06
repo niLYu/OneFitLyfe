@@ -6,13 +6,25 @@ import Navbar from '../../../components/Navbar/Navbar.js';
 class Data extends Component {
   constructor(props) {
     super(props);
+    this.getTDEE = this.getTDEE.bind(this)
   }
+
+  getTDEE() {
+    const user = this.props.user
+    if (user.sex === 'male') {
+      return Math.round((10 * user.weight / 2.2046226218 + 6.25 * user.height * 2.54 - 5 * user.age + 5) * user.activity)
+    } else {
+      return Math.round((10 * user.weight / 2.2046226218 + 6.25 * user.height * 2.54 - 5 * user.age - 161) * user.activity)
+    }
+  }
+
   render() {
-    console.log('data', this.props)
     return (
       <View>
-        <Navbar prop={this.props}/>
-        <Text>Data component</Text>
+        <Navbar prop={this.props} />
+        <Text>To gain 1lb per week, consume {this.getTDEE() + 500} calories daily</Text>
+        <Text>To maintain, consume {this.getTDEE()} calories daily</Text>
+        <Text>To lose 1lb per week, consume {this.getTDEE() - 500} calories daily</Text>
       </View>
     )
   }
@@ -20,16 +32,15 @@ class Data extends Component {
 
 const mapState = function (state) {
   return {
-    user: state
+    user: state.calCalc.user
   }
 }
 
 export default connect(mapState, null)(Data);
 
-// BMR = 88.362 + (13.397 x weight in kg) +
-// (4.799 x height in cm) – (5.677 x age in years)
+// For men: BMR = 10 x weight (kg) + 6.25 x height (cm) – 5 x age (years) + 5
+// For women: BMR = 10 x weight (kg) + 6.25 x height (cm) – 5 x age (years) – 161
 
-// BMR = 447.593 + (9.247 x weight in kg) +
-// (3.098 x height in cm) – (4.330 x age in years)
+// https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4278349/
 
 // https://www.nutritionix.com/business/api

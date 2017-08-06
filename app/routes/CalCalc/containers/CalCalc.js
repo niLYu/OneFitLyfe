@@ -21,7 +21,7 @@ class CalCalc extends Component {
     super(props);
     this.state = {
       sex: 'male',
-      activity: 'sedentary',
+      activity: 1.2,
       age: null,
       height: null,
       weight: null,
@@ -29,7 +29,7 @@ class CalCalc extends Component {
   this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onSubmit (event) {
+  onSubmit () {
     this.props.assignUserInfo(this.state)
     this.props.navigation.navigate('Data')
   }
@@ -62,19 +62,22 @@ class CalCalc extends Component {
             {Object.keys(USER_ACTIVITY).map(activity => (
               <PickerItemIOS
                 key={activity}
-                value={activity}
+                value={USER_ACTIVITY[activity]}
                 label={activity}
               />
             ))}
           </PickerIOS>
           <TextInput
             style={styles.textInput}
+            onChangeText={age => this.setState({age})}
             placeholder='Enter your age' />
           <TextInput
             style={styles.textInput}
+            onChangeText={height => this.setState({height})}
             placeholder='Enter your height' />
           <TextInput
             style={styles.textInput}
+            onChangeText={weight => this.setState({weight})}
             placeholder='Enter your current weight' />
           <Button
             onPress={() => this.onSubmit()}
@@ -113,13 +116,7 @@ var styles = StyleSheet.create({
   }
 });
 
-const mapState = function (state) {
-  return {
-    user: state
-  };
-};
-
 const mapDispatch = {assignUserInfo}
 
-export default connect(mapState, mapDispatch)(CalCalc);
+export default connect(null, mapDispatch)(CalCalc);
 
