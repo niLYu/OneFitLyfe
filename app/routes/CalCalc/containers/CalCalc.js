@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
-  StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View, PickerIOS,
+  StyleSheet, Text, TextInput, View, PickerIOS, Button,
+  KeyboardAvoidingView
 } from 'react-native';
+import Data from '../../Data/containers/Data';
 import Navbar from '../../../components/Navbar/Navbar.js';
+import {assignUserInfo} from '../modules/calcalcReducer';
 
 const PickerItemIOS = PickerIOS.Item;
 
@@ -22,6 +26,12 @@ class CalCalc extends Component {
       height: null,
       weight: null,
     }
+  this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onSubmit (event) {
+    this.props.assignUserInfo(this.state)
+    this.props.navigation.navigate('Data')
   }
 
   render() {
@@ -66,6 +76,12 @@ class CalCalc extends Component {
           <TextInput
             style={styles.textInput}
             placeholder='Enter your current weight' />
+          <Button
+            onPress={() => this.onSubmit()}
+            title="Submit"
+            color="#008000"
+            accessibilityLabel="Submit"
+          />
         </View>
       </View>
     )
@@ -82,13 +98,28 @@ var styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    flexDirection: 'column',
     alignItems: 'center',
   },
   textInput: {
-    padding: 10
+    height: 40,
+    borderColor: 'gray',
+    // borderRadius: 2,
+    // backgroundColor: '#fff',
+    // marginHorizontal: 10,
+    // marginVertical: 5,
+    // paddingVertical: 5,
+    // paddingHorizontal: 15,
+    // width: window.width - 30,
   }
 });
 
-export default CalCalc;
+const mapState = function (state) {
+  return {
+    user: state
+  };
+};
+
+const mapDispatch = {assignUserInfo}
+
+export default connect(mapState, mapDispatch)(CalCalc);
 
