@@ -11,7 +11,6 @@ class Data extends Component {
 
   getTDEE() {
     const user = this.props.user
-    console.log(this.props.user)
     if (user.sex === 'male') {
       return Math.round((10 * user.weight / 2.2046226218 + 6.25 * user.height * 2.54 - 5 * user.age + 5) * user.activity)
     } else {
@@ -23,9 +22,9 @@ class Data extends Component {
     return (
       <View>
         <Navbar prop={this.props} />
-        <Text>{this.getTDEE() + 500} calories</Text>
-        <Text>{this.getTDEE()} calories</Text>
-        <Text>{this.getTDEE() - 500} calories</Text>
+        <Text>To gain 1lb per week, consume {this.getTDEE() + 500} calories daily</Text>
+        <Text>To maintain, consume {this.getTDEE()} calories daily</Text>
+        <Text>To lose 1lb per week, consume {this.getTDEE() - 500} calories daily</Text>
       </View>
     )
   }
