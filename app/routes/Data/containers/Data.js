@@ -31,9 +31,9 @@ class Data extends Component {
         <Text>- 1lb per week, consume {this.getTDEE() - 500} calories daily</Text>
         <Button
             onPress={() => this.onSubmit()}
-            title="Enter target weight"
+            title="Track now!"
             color="#008000"
-            accessibilityLabel="Enter target weight"
+            accessibilityLabel="Track now!"
           />
       </View>
     )

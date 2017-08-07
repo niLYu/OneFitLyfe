@@ -95,7 +95,8 @@ var styles = StyleSheet.create({
     flex: 1
   },
   picker: {
-    width: 150,
+    width: 200,
+    borderColor: 'gray',
     padding: 0,
   },
   content: {
