@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Button } from 'react-native';
+import { Text, View, Button, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import Navbar from '../../../components/Navbar/Navbar.js';
 
@@ -18,7 +18,7 @@ class Data extends Component {
     }
   }
 
-   onSubmit () {
+  onSubmit() {
     this.props.navigation.navigate('Daily', this.getTDEE())
   }
 
@@ -26,15 +26,19 @@ class Data extends Component {
     return (
       <View>
         <Navbar prop={this.props} />
-        <Text>+ 1lb per week, consume {this.getTDEE() + 500} calories daily</Text>
-        <Text>To maintain, consume {this.getTDEE()} calories daily</Text>
-        <Text>- 1lb per week, consume {this.getTDEE() - 500} calories daily</Text>
-        <Button
-            onPress={() => this.onSubmit()}
-            title="Track now!"
-            color="#008000"
-            accessibilityLabel="Track now!"
-          />
+        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+          <Text style={styles.textStyles}>+ 1lb per week, consume {this.getTDEE() + 500} calories daily</Text>
+          <Text style={styles.textStyles}>To maintain, consume {this.getTDEE()} calories daily</Text>
+          <Text style={styles.textStyles}>- 1lb per week, consume {this.getTDEE() - 500} calories daily</Text>
+          <View style={styles.buttonContainer}>
+            <Button
+              onPress={() => this.onSubmit()}
+              title="Track now!"
+              color="#008000"
+              accessibilityLabel="Track now!"
+            />
+          </View>
+        </View>
       </View>
     )
   }
@@ -47,6 +51,28 @@ const mapState = function (state) {
 }
 
 export default connect(mapState, null)(Data);
+
+const styles = StyleSheet.create({
+  textStyles: {
+    padding: 10
+  },
+  buttonContainer: {
+    backgroundColor: '#68efad',
+    borderRadius: 10,
+    margin: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 150,
+    height: 50,
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowRadius: 10,
+    shadowOpacity: 0.25
+  }
+})
 
 // For men: BMR = 10 x weight (kg) + 6.25 x height (cm) – 5 x age (years) + 5
 // For women: BMR = 10 x weight (kg) + 6.25 x height (cm) – 5 x age (years) – 161
