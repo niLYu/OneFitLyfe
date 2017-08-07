@@ -9,18 +9,14 @@ import Navbar from '../../../components/Navbar/Navbar.js';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#f7f7f7',
   },
   textStyling: {
-    marginBottom: 20
+    marginBottom: 20,
+    textAlign: 'center'
   }
 });
-
-// this.setState(previousState => ({
-//     myArray: [...previousState.myArray, 'new value']
-// }));
 
 class Daily extends Component {
   constructor(props) {
@@ -42,16 +38,16 @@ class Daily extends Component {
           "name": ""
         }]
       ],
-      meals: [25],
+      meal: 0,
+      meals: [],
     }
-    this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onSubmit(event) {
-    console.log(event)
+  onSubmit = () => {
     this.setState(previousState => ({
-      myArray: [...previousState.meals, event.value]
+      meals: [...previousState.meals, previousState.meal]
     }));
+    this._textInput.setNativeProps({text: ''})
   }
 
   render() {
@@ -101,24 +97,34 @@ class Daily extends Component {
         }
       }
     }
-
+    console.log(this.state)
     return (
       <View style={{ flex: 1 }}>
         <Navbar prop={this.props}></Navbar>
+        <Text style={styles.textStyling}>Daily calorie consumption: </Text>
         <View style={styles.container}>
           <Bar data={this.state.data} options={options} accessorKey='v' />
-          <Text style={styles.textStyling}>Daily calorie consumption: </Text>
+
           {this.state.meals.length > 0 &&
             this.state.meals.map(meal => {
-              return <Text key={meal}>{meal}</Text>
+              return <Text key={meal}>{meal} calories</Text>
             })
           }
+          <Text style={styles.textStyling}>Total calories: {this.state.meals.reduce((a, b) => {
+            return +a + +b }, 0)}</Text>
           <View style={{ alignSelf: 'stretch' }}>
             <TextInput
-              returnKeyType='Done'
-              onSubmitEditing={(event) => this.onSubmit(event)}
-              placeholder='enter calories for your meal'
+              ref={component => this._textInput = component}
+              style={styles.textStyling}
+              onChangeText={meal => this.setState({meal})}
+              placeholder='Enter calories for your meal'
             />
+            <Button
+            onPress={() => this.onSubmit()}
+            title="Submit"
+            color="#008000"
+            accessibilityLabel="Submit"
+          />
           </View>
         </View>
       </View>

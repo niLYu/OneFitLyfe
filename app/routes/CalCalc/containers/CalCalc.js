@@ -26,10 +26,9 @@ class CalCalc extends Component {
       height: null,
       weight: null,
     }
-  this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onSubmit () {
+  onSubmit = () => {
     this.props.assignUserInfo(this.state)
     this.props.navigation.navigate('Data')
   }
@@ -106,6 +105,7 @@ var styles = StyleSheet.create({
   textInput: {
     height: 40,
     borderColor: 'gray',
+    textAlign: 'center',
     // borderRadius: 2,
     // backgroundColor: '#fff',
     // marginHorizontal: 10,
