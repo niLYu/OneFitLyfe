@@ -19,16 +19,16 @@ class Data extends Component {
   }
 
    onSubmit () {
-    this.props.navigation.navigate('Daily')
+    this.props.navigation.navigate('Daily', this.getTDEE())
   }
 
   render() {
     return (
       <View>
         <Navbar prop={this.props} />
-        <Text>To gain 1lb per week, consume {this.getTDEE() + 500} calories daily</Text>
+        <Text>+ 1lb per week, consume {this.getTDEE() + 500} calories daily</Text>
         <Text>To maintain, consume {this.getTDEE()} calories daily</Text>
-        <Text>To lose 1lb per week, consume {this.getTDEE() - 500} calories daily</Text>
+        <Text>- 1lb per week, consume {this.getTDEE() - 500} calories daily</Text>
         <Button
             onPress={() => this.onSubmit()}
             title="Enter target weight"

@@ -70,15 +70,15 @@ class CalCalc extends Component {
           <TextInput
             style={styles.textInput}
             onChangeText={age => this.setState({age})}
-            placeholder='Enter your age' />
+            placeholder='Enter your age (yrs)' />
           <TextInput
             style={styles.textInput}
             onChangeText={height => this.setState({height})}
-            placeholder='Enter your height' />
+            placeholder='Enter your height (inches)' />
           <TextInput
             style={styles.textInput}
             onChangeText={weight => this.setState({weight})}
-            placeholder='Enter your current weight' />
+            placeholder='Enter your weight (lbs)' />
           <Button
             onPress={() => this.onSubmit()}
             title="Submit"

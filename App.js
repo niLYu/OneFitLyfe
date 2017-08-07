@@ -8,7 +8,8 @@ import Routes from './app/routes';
 import getStore from './app/store/createStore.js';
 
 //For testing chart style
-const AppNavigator = StackNavigator(Routes, {headerMode: 'none', initialRouteName: 'Daily'});
+// {headerMode: 'none', initialRouteName: 'Daily'});
+const AppNavigator = StackNavigator(Routes, {headerMode: 'none'});
 
 const navReducer = (state, action) => {
   const newState = AppNavigator.router.getStateForAction(action, state);

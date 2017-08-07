@@ -1,7 +1,7 @@
 'use strict'
 
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, TextInput, Text, StyleSheet, Button } from 'react-native';
 
 import { Bar } from 'react-native-pathjs-charts'
 import Navbar from '../../../components/Navbar/Navbar.js';
@@ -13,33 +13,51 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#f7f7f7',
   },
+  textStyling: {
+    marginBottom: 20
+  }
 });
 
-class Daily extends Component {
-  static navigationOptions = ({ navigation }) => ({
-    title: `Bar (Column) - Basic`,
-  });
-  render() {
-    let data = [
-      [{
-        "v": 0,
-        "name": ""
-      }, {
-        "v": 3000,
-        "name": "target"
-      }],
-      [{
-        "v": 2500,
-        "name": "current"
-      }, {
-        "v": 0,
-        "name": ""
-      }]
-    ]
+// this.setState(previousState => ({
+//     myArray: [...previousState.myArray, 'new value']
+// }));
 
+class Daily extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      data: [
+        [{
+          "v": 0,
+          "name": ""
+        }, {
+          "v": this.props.navigation.state.params,
+          "name": "target"
+        }],
+        [{
+          "v": 0,
+          "name": "current"
+        }, {
+          "v": 0,
+          "name": ""
+        }]
+      ],
+      meals: [25],
+    }
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onSubmit(event) {
+    console.log(event)
+    this.setState(previousState => ({
+      myArray: [...previousState.meals, event.value]
+    }));
+  }
+
+  render() {
     let options = {
       width: 200,
-      height: 200,
+      height: 150,
       margin: {
         top: 20,
         left: 25,
@@ -65,7 +83,7 @@ class Daily extends Component {
           fontSize: 8,
           fontWeight: true,
           fill: '#34495E',
-          rotate: 45
+          rotate: 45,
         }
       },
       axisY: {
@@ -85,10 +103,23 @@ class Daily extends Component {
     }
 
     return (
-      <View style={{flex: 1}}>
+      <View style={{ flex: 1 }}>
         <Navbar prop={this.props}></Navbar>
         <View style={styles.container}>
-          <Bar data={data} options={options} accessorKey='v'/>
+          <Bar data={this.state.data} options={options} accessorKey='v' />
+          <Text style={styles.textStyling}>Daily calorie consumption: </Text>
+          {this.state.meals.length > 0 &&
+            this.state.meals.map(meal => {
+              return <Text key={meal}>{meal}</Text>
+            })
+          }
+          <View style={{ alignSelf: 'stretch' }}>
+            <TextInput
+              returnKeyType='Done'
+              onSubmitEditing={(event) => this.onSubmit(event)}
+              placeholder='enter calories for your meal'
+            />
+          </View>
         </View>
       </View>
     )
