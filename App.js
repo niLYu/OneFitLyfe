@@ -7,6 +7,8 @@ import CalCalcScreen from './app/routes/CalCalc/containers/CalCalc.js';
 import Routes from './app/routes';
 import getStore from './app/store/createStore.js';
 
+//For testing chart style
+// {headerMode: 'none', initialRouteName: 'Daily'});
 const AppNavigator = StackNavigator(Routes, {headerMode: 'none'});
 
 const navReducer = (state, action) => {

@@ -26,10 +26,9 @@ class CalCalc extends Component {
       height: null,
       weight: null,
     }
-  this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onSubmit () {
+  onSubmit = () => {
     this.props.assignUserInfo(this.state)
     this.props.navigation.navigate('Data')
   }
@@ -70,15 +69,15 @@ class CalCalc extends Component {
           <TextInput
             style={styles.textInput}
             onChangeText={age => this.setState({age})}
-            placeholder='Enter your age' />
+            placeholder='Enter your age (yrs)' />
           <TextInput
             style={styles.textInput}
             onChangeText={height => this.setState({height})}
-            placeholder='Enter your height' />
+            placeholder='Enter your height (inches)' />
           <TextInput
             style={styles.textInput}
             onChangeText={weight => this.setState({weight})}
-            placeholder='Enter your current weight' />
+            placeholder='Enter your weight (lbs)' />
           <Button
             onPress={() => this.onSubmit()}
             title="Submit"
@@ -96,7 +95,8 @@ var styles = StyleSheet.create({
     flex: 1
   },
   picker: {
-    width: 150,
+    width: 200,
+    borderColor: 'gray',
     padding: 0,
   },
   content: {
@@ -106,13 +106,7 @@ var styles = StyleSheet.create({
   textInput: {
     height: 40,
     borderColor: 'gray',
-    // borderRadius: 2,
-    // backgroundColor: '#fff',
-    // marginHorizontal: 10,
-    // marginVertical: 5,
-    // paddingVertical: 5,
-    // paddingHorizontal: 15,
-    // width: window.width - 30,
+    textAlign: 'center',
   }
 });
 

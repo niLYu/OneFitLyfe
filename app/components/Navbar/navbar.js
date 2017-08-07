@@ -14,7 +14,7 @@ export default class NavBarIOSColored extends Component {
           </NavButtonText>
         </NavButton>
         <NavTitle style={styles.title}>
-          {"fitDevil"}
+          {"OneFitLyfe"}
         </NavTitle>
         <NavButton onPress={() => alert('hi')}>
           <NavButtonText style={styles.buttonText}>
