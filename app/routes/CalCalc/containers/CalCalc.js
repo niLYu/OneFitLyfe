@@ -106,13 +106,6 @@ var styles = StyleSheet.create({
     height: 40,
     borderColor: 'gray',
     textAlign: 'center',
-    // borderRadius: 2,
-    // backgroundColor: '#fff',
-    // marginHorizontal: 10,
-    // marginVertical: 5,
-    // paddingVertical: 5,
-    // paddingHorizontal: 15,
-    // width: window.width - 30,
   }
 });
 
